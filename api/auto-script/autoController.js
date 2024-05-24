@@ -83,7 +83,7 @@ const sendMessage = async (id, contact, name, agent) => {
 
 const fetchAndSendMessage = async () => {
   try {
-    const query = `SELECT * FROM follow_up_cust ORDER BY id ASC LIMIT 1`;
+    const query = `SELECT * FROM follow_up_cust WHERE sent_status = 'not-sent' ORDER BY id ASC LIMIT 1`;
     const rows = await poolConnection.query(query);
 
     if (rows.length > 0) {
@@ -125,4 +125,3 @@ export default {
   autoScript,
 };
 
-// WHERE sent_status = 'not-sent'
