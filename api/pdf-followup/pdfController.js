@@ -8,8 +8,8 @@ const sendWhatsAppMediaMessage = async (fileUrl, message, number, filename) => {
     message: message,
     media_url: fileUrl,
     filename: filename,
-    instance_id: "662D19546A2F8", // Replace with your instance ID
-    access_token: "662d18de74f14", // Replace with your access token
+    instance_id: "662D19546A2F8",
+    access_token: "662d18de74f14",
   };
 
   try {
@@ -45,7 +45,11 @@ const sendMessage = async (number, name, agent) => {
 
     const message = `Assalam o alaiykum ${capName},
 
-${capAgenet} here from *MAH Kitchen & Caterers.*
+_${capAgenet}_ here from *MAH Kitchen & Caterers.*
+
+We provide lunch & dinner at a very low starting price of Rs 4600 per month.
+
+Are you interested in our monthly subscription?
     
 *Our office is located on:*
 _Office suite 1, 4th floor, 15-C, Lane 2, Rahat commercial Area phase 6 DHA, Karachi, Pakistan._
