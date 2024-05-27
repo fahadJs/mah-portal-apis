@@ -31,10 +31,10 @@ const sendMessage = async (id, contact, name, agent) => {
     let message = messageRow.message;
 
     const greeting = [
-        `Hi, *${capName},* \n\n`,
-        `Assalam o alaiykum, Dear *${capName},* \n\n`,
-        `Hello, *${capName},* \n\n`,
-        `Salam, *${capName},* \n\n`,
+        `Hi, *${capName}* \n\n`,
+        `Assalam o alaiykum, Dear *${capName}* \n\n`,
+        `Hello, *${capName}* \n\n`,
+        `Salam, *${capName}* \n\n`,
     ];
 
     const randomIndexGreeting = Math.floor(Math.random() * 4);
