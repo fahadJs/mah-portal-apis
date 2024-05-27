@@ -43,7 +43,7 @@ const sendMessage = async (number, name, agent) => {
     const capName = capitalize(name);
     const capAgenet = capitalize(agent);
 
-    const message = `Assalam o alaiykum ${capName},
+    const message = `Assalam o alaiykum ${capName}
 
 _${capAgenet}_ here from *MAH Kitchen & Caterers.*
 
