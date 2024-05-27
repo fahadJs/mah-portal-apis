@@ -101,7 +101,7 @@ I will follow-up with you shortly afterwards. Thank you & it was nice talking to
 };
 
 const sendAllFiles = async (req, res) => {
-    const { name, number, agent } = req.params;
+  const { name, number, agent } = req.params;
   const files = [
     // "https://i.imghippo.com/files/F0qEP1716474159.pdf",
     // "https://i.imghippo.com/files/H8RHv1716474206.pdf",
@@ -111,9 +111,45 @@ const sendAllFiles = async (req, res) => {
       url: "https://i.imghippo.com/files/F0qEP1716474159.pdf",
       filename: "MAH_Kitchen_Business_Profile.pdf",
     },
+    // {
+    //   url: "https://i.imghippo.com/files/H8RHv1716474206.pdf",
+    //   filename: "MAH_Deals_Card.pdf",
+    // },
     {
-      url: "https://i.imghippo.com/files/H8RHv1716474206.pdf",
-      filename: "MAH_Deals_Card.pdf",
+      url: "https://i.imghippo.com/files/3ja9o1716812990.jpg",
+      filename: "Deal_1.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/9tlKy1716813009.jpg",
+      filename: "Deal_2.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/Amu3p1716813028.jpg",
+      filename: "Deal_3.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/BTvmn1716813047.jpg",
+      filename: "Deal_4.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/CNfHx1716813068.jpg",
+      filename: "Deal_5.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/x4QVn1716813082.jpg",
+      filename: "Deal_6.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/IQwNY1716813099.jpg",
+      filename: "Deal_7.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/RMDkp1716813114.jpg",
+      filename: "Deal_8.jpg",
+    },
+    {
+      url: "https://i.imghippo.com/files/1v1GZ1716813135.jpg",
+      filename: "Deal_9.jpg",
     },
     {
       url: "https://i.imghippo.com/files/Csopc1716473961.jpg",
@@ -121,9 +157,9 @@ const sendAllFiles = async (req, res) => {
     },
   ];
 
-//   const number = "923331233774";
-//   const name = "ashar";
-//   const agent = "anunzio";
+  //   const number = "923331233774";
+  //   const name = "ashar";
+  //   const agent = "anunzio";
 
   try {
     const results = [];
@@ -133,8 +169,24 @@ const sendAllFiles = async (req, res) => {
 
       if (url === "https://i.imghippo.com/files/F0qEP1716474159.pdf") {
         caption = "*MAH Kitchen Business Profile*";
-      } else if (url === "https://i.imghippo.com/files/H8RHv1716474206.pdf") {
-        caption = "*MAH Deals Card*";
+      } else if (url === "https://i.imghippo.com/files/3ja9o1716812990.jpg") {
+        caption = "*Deal 1*";
+      } else if (url === "https://i.imghippo.com/files/9tlKy1716813009.jpg") {
+        caption = "*Deal 2*";
+      } else if (url === "https://i.imghippo.com/files/Amu3p1716813028.jpg") {
+        caption = "*Deal 3*";
+      } else if (url === "https://i.imghippo.com/files/BTvmn1716813047.jpg") {
+        caption = "*Deal 4*";
+      } else if (url === "https://i.imghippo.com/files/CNfHx1716813068.jpg") {
+        caption = "*Deal 5*";
+      } else if (url === "https://i.imghippo.com/files/x4QVn1716813082.jpg") {
+        caption = "*Deal 6*";
+      } else if (url === "https://i.imghippo.com/files/IQwNY1716813099.jpg") {
+        caption = "*Deal 7*";
+      } else if (url === "https://i.imghippo.com/files/RMDkp1716813114.jpg") {
+        caption = "*Deal 8*";
+      } else if (url === "https://i.imghippo.com/files/1v1GZ1716813135.jpg") {
+        caption = "*Deal 9*";
       } else if (url === "https://i.imghippo.com/files/Csopc1716473961.jpg") {
         caption = "*Make Your Own MENU*";
       }
