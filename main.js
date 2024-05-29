@@ -18,7 +18,7 @@ app.listen(process.env.APP_PORT, () => {
   
   autoController.autoScript();
 
-  const interval = 20 * 60 * 1000; // 20 minutes in milliseconds
+  const interval = 10 * 60 * 1000; // 20 minutes in milliseconds
   // const interval = 10000; // 10 seconds
   setInterval(() => {
     console.log("Running scheduled task...");
