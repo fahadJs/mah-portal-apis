@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import poolConnection from "../../config/database.js";
 
 const sendWhatsAppMediaMessage = async (fileUrl, message, number, filename) => {
   const apiUrl = "https://app.wabot.my/api/send";
@@ -93,6 +94,59 @@ I will follow-up with you shortly afterwards. Thank you & it was nice talking to
     const data = await response.json();
     // console.log(`Success: Sent ${fileUrl}`);
     return data;
+  } catch (error) {
+    // Error occurred
+    console.error("Error:", error.message);
+    throw error;
+  }
+};
+
+const assignAgent = async (name, number) => {
+  try {
+    const query = `SELECT id, assigned_agent FROM follow_up_cust ORDER BY id DESC LIMIT 1`;
+    const res = await poolConnection.query(query);
+
+    if (res.length > 0) {
+      const { assigned_agent } = res[0];
+
+      let agnetNumber;
+
+      if (assigned_agent == "ifrah") {
+        agnetNumber = "923130006121";
+      } else if (assigned_agent == "anum") {
+        agnetNumber = "923482058184";
+      } else {
+        agnetNumber = "923130006121";
+      }
+
+      const message = `Hi, ${assigned_agent}\n\nKindly follow up this customer:\n\nName: ${name}\nNumber: ${number}`;
+
+      // WhatsApp API endpoint
+      const apiUrl = "https://app.wabot.my/api/send";
+
+      // Data to be sent in the request body
+      const payload = {
+        number: agnetNumber,
+        type: "text",
+        message: message,
+        instance_id: "662D19546A2F8",
+        access_token: "662d18de74f14",
+      };
+
+      // Make POST request to WhatsApp API
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log("Message sent successfully to " + assigned_agent);
+      const data = await response.json();
+      // console.log(`Success: Sent ${fileUrl}`);
+      return data;
+    }
   } catch (error) {
     // Error occurred
     console.error("Error:", error.message);
@@ -251,16 +305,18 @@ const sendAllFiles = async (req, res) => {
       } else if (filename === "14_days.jpg") {
         caption = "*14-Day Menu*";
       }
-      await sendWhatsAppMediaMessage(
-        url,
-        caption,
-        number,
-        filename // Pass the filename to the function
-      );
+      // await sendWhatsAppMediaMessage(
+      //   url,
+      //   caption,
+      //   number,
+      //   filename // Pass the filename to the function
+      // );
       //   results.push(result);
     }
 
     await sendMessage(number, name, agent);
+
+    await assignAgent(name, number);
     console.log("All files sent:");
     res.status(200).json({ success: true, message: "All files sent!" });
   } catch (error) {
