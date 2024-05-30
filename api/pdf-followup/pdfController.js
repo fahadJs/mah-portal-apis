@@ -111,9 +111,9 @@ const assignAgent = async (name, number) => {
 
       let agnetNumber;
 
-      if (assigned_agent == "ifrah") {
+      if (assigned_agent == "ifrah" || assigned_agent == "Ifrah") {
         agnetNumber = "923130006121";
-      } else if (assigned_agent == "anum") {
+      } else if (assigned_agent == "anum" || assigned_agent == "Anum") {
         agnetNumber = "923482058184";
       } else {
         agnetNumber = "923130006121";
@@ -305,12 +305,12 @@ const sendAllFiles = async (req, res) => {
       } else if (filename === "14_days.jpg") {
         caption = "*14-Day Menu*";
       }
-      // await sendWhatsAppMediaMessage(
-      //   url,
-      //   caption,
-      //   number,
-      //   filename // Pass the filename to the function
-      // );
+      await sendWhatsAppMediaMessage(
+        url,
+        caption,
+        number,
+        filename // Pass the filename to the function
+      );
       //   results.push(result);
     }
 
