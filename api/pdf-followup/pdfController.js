@@ -210,6 +210,10 @@ const sendAllFiles = async (req, res) => {
       url: "https://www.dropbox.com/scl/fi/wnqpgh7tsw99m4kia3vje/custom.jpeg?rlkey=ffqqbh7sn52npok4v67saz2kb&st=i03wzpux&dl=1",
       filename: "Make_Your_Own_MENU.jpg",
     },
+    {
+      url: "https://www.dropbox.com/scl/fi/t5ui9mhgtfvsh2olthgjy/14-days.jpg?rlkey=36dko8hyjwuuq6r60wxs6g6w7&st=zjfj76nr&dl=1",
+      filename: "14_days.jpg",
+    },
   ];
 
   //   const number = "923331233774";
@@ -244,6 +248,8 @@ const sendAllFiles = async (req, res) => {
         caption = "*Deal 9*";
       } else if (filename === "Make_Your_Own_MENU.jpg") {
         caption = "*Make Your Own MENU*";
+      } else if (filename === "14_days.jpg") {
+        caption = "*14-Day Menu*";
       }
       await sendWhatsAppMediaMessage(
         url,
