@@ -1,5 +1,7 @@
 import poolConnection from "../../config/database.js";
 import fetch from "node-fetch";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const sendMessage = async (id, contact, name, agent) => {
   try {
@@ -47,15 +49,15 @@ const sendMessage = async (id, contact, name, agent) => {
     message = randomGreeting + message + footer;
 
     // WhatsApp API endpoint
-    const apiUrl = "https://app.wabot.my/api/send";
+    const apiUrl = process.env.WA_API_URL;
 
     // Data to be sent in the request body
     const payload = {
       number: contact,
       type: "text",
       message: message,
-      instance_id: "662D19546A2F8",
-      access_token: "662d18de74f14",
+      instance_id: process.env.INSTANCE_ID,
+      access_token: process.env.TOKEN,
     };
 
     // Make POST request to WhatsApp API

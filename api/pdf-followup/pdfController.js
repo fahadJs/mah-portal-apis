@@ -1,16 +1,18 @@
 import fetch from "node-fetch";
 import poolConnection from "../../config/database.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const sendWhatsAppMediaMessage = async (fileUrl, message, number, filename) => {
-  const apiUrl = "https://app.wabot.my/api/send";
+  const apiUrl = process.env.WA_API_URL;
   const payload = {
     number: number,
     type: "media",
     message: message,
     media_url: fileUrl,
     filename: filename,
-    instance_id: "662D19546A2F8",
-    access_token: "662d18de74f14",
+    instance_id: process.env.INSTANCE_ID,
+    access_token: process.env.TOKEN,
   };
 
   try {
@@ -70,15 +72,15 @@ I will follow-up with you shortly afterwards. Thank you & it was nice talking to
     // }
 
     // WhatsApp API endpoint
-    const apiUrl = "https://app.wabot.my/api/send";
+    const apiUrl = process.env.WA_API_URL;
 
     // Data to be sent in the request body
     const payload = {
       number: number,
       type: "text",
       message: message,
-      instance_id: "662D19546A2F8",
-      access_token: "662d18de74f14",
+      instance_id: process.env.INSTANCE_ID,
+      access_token: process.env.TOKEN,
     };
 
     // Make POST request to WhatsApp API
@@ -122,15 +124,15 @@ const assignAgent = async (name, number) => {
       const message = `Hi, ${assigned_agent}\n\nKindly follow up this customer:\n\nName: ${name}\nNumber: ${number}`;
 
       // WhatsApp API endpoint
-      const apiUrl = "https://app.wabot.my/api/send";
+      const apiUrl = process.env.WA_API_URL;
 
       // Data to be sent in the request body
       const payload = {
         number: agnetNumber,
         type: "text",
         message: message,
-        instance_id: "662D19546A2F8",
-        access_token: "662d18de74f14",
+        instance_id: process.env.INSTANCE_ID,
+        access_token: process.env.TOKEN,
       };
 
       // Make POST request to WhatsApp API

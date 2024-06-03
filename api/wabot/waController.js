@@ -1,4 +1,6 @@
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const sendMessage = async (req, res) => {
     try {
@@ -11,15 +13,15 @@ const sendMessage = async (req, res) => {
         }
 
         // WhatsApp API endpoint
-        const apiUrl = 'https://app.wabot.my/api/send';
+        const apiUrl = process.env.WA_API_URL;
 
         // Data to be sent in the request body
         const data = {
             number: number,
             type: 'text',
             message: message,
-            instance_id: '662D19546A2F8',
-            access_token: '662d18de74f14'
+            instance_id: process.env.INSTANCE_ID,
+            access_token: process.env.TOKEN,
         };
 
         // Make POST request to WhatsApp API
