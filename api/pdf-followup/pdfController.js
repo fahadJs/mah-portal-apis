@@ -277,6 +277,7 @@ const sendAllFiles = async (req, res) => {
   //   const agent = "anunzio";
 
   try {
+    await assignAgent(name, number);
     const results = [];
     for (let index = 0; index < files.length; index++) {
       const { url, filename } = files[index];
@@ -317,8 +318,6 @@ const sendAllFiles = async (req, res) => {
     }
 
     await sendMessage(number, name, agent);
-
-    await assignAgent(name, number);
     console.log("All files sent:");
     res.status(200).json({ success: true, message: "All files sent!" });
   } catch (error) {
