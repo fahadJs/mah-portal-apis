@@ -210,9 +210,9 @@ const sendAllFiles = async (req, res) => {
     },
   ];
 
-    const number = "923331233774";
-    const name = "ashar";
-    const agent = "anunzio";
+    // const number = "923331233774";
+    // const name = "ashar";
+    // const agent = "anunzio";
 
   try {
     await assignAgent(name, number);
