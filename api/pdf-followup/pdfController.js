@@ -157,75 +157,13 @@ const assignAgent = async (name, number) => {
 };
 
 const sendAllFiles = async (req, res) => {
-  const { name, number, agent } = req.params;
-  // const files = [
-  //   // "https://i.imghippo.com/files/F0qEP1716474159.pdf",
-  //   // "https://i.imghippo.com/files/H8RHv1716474206.pdf",
-  //   // "https://i.imghippo.com/files/Csopc1716473961.jpg",
-
-  //   {
-  //     url: "https://i.imghippo.com/files/F0qEP1716474159.pdf",
-  //     filename: "MAH_Kitchen_Business_Profile.pdf",
-  //   },
-  //   // {
-  //   //   url: "https://i.imghippo.com/files/H8RHv1716474206.pdf",
-  //   //   filename: "MAH_Deals_Card.pdf",
-  //   // },
-  //   {
-  //     url: "https://i.imghippo.com/files/3ja9o1716812990.jpg",
-  //     filename: "Deal_1.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/9tlKy1716813009.jpg",
-  //     filename: "Deal_2.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/Amu3p1716813028.jpg",
-  //     filename: "Deal_3.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/BTvmn1716813047.jpg",
-  //     filename: "Deal_4.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/CNfHx1716813068.jpg",
-  //     filename: "Deal_5.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/x4QVn1716813082.jpg",
-  //     filename: "Deal_6.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/IQwNY1716813099.jpg",
-  //     filename: "Deal_7.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/RMDkp1716813114.jpg",
-  //     filename: "Deal_8.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/1v1GZ1716813135.jpg",
-  //     filename: "Deal_9.jpg",
-  //   },
-  //   {
-  //     url: "https://i.imghippo.com/files/Csopc1716473961.jpg",
-  //     filename: "Make_Your_Own_MENU.jpg",
-  //   },
-  // ];
+  // const { name, number, agent } = req.params;
 
   const files = [
-    // "https://i.imghippo.com/files/F0qEP1716474159.pdf",
-    // "https://i.imghippo.com/files/H8RHv1716474206.pdf",
-    // "https://i.imghippo.com/files/Csopc1716473961.jpg",
-
     {
       url: "https://www.dropbox.com/scl/fi/yzxzkbuokgddr6nt9v32w/MAH-Kitchen-Business-Profile.pdf?rlkey=ve5q1ju1yx9rkv40y54fzn4z8&st=z3btrvkg&dl=1",
       filename: "MAH_Kitchen_Business_Profile.pdf",
     },
-    // {
-    //   url: "https://i.imghippo.com/files/H8RHv1716474206.pdf",
-    //   filename: "MAH_Deals_Card.pdf",
-    // },
     {
       url: "https://www.dropbox.com/scl/fi/mbwwd6l0ms8a6qb67yc80/Deal-1.jpeg?rlkey=tcbeup25ecj24tjbafagu5c93&st=h5sqbpa9&dl=1",
       filename: "Deal_1.jpg",
@@ -272,13 +210,15 @@ const sendAllFiles = async (req, res) => {
     },
   ];
 
-  //   const number = "923331233774";
-  //   const name = "ashar";
-  //   const agent = "anunzio";
+    const number = "923331233774";
+    const name = "ashar";
+    const agent = "anunzio";
 
   try {
     await assignAgent(name, number);
     const results = [];
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     for (let index = 0; index < files.length; index++) {
       const { url, filename } = files[index];
       let caption;
@@ -315,8 +255,10 @@ const sendAllFiles = async (req, res) => {
         filename // Pass the filename to the function
       );
       //   results.push(result);
+      await delay(5000);
     }
 
+    await delay(5000);
     await sendMessage(number, name, agent);
     console.log("All files sent:");
     res.status(200).json({ success: true, message: "All files sent!" });
