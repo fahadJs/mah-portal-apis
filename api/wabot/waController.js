@@ -25,7 +25,7 @@ const sendMessage = async (req, res) => {
     };
 
     // Make POST request to WhatsApp API
-    await fetch(apiUrl, {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
