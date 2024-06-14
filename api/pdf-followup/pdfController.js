@@ -157,7 +157,7 @@ const assignAgent = async (name, number) => {
 };
 
 const sendAllFiles = async (req, res) => {
-  // const { name, number, agent } = req.params;
+  const { name, number, agent } = req.params;
 
   const files = [
     {
