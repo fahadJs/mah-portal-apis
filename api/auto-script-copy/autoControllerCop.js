@@ -114,7 +114,7 @@ I will follow-up with you shortly afterwards. Thank you & it was nice talking to
 
 const assignAgent = async (name, number) => {
   try {
-    const query = `SELECT id, assigned_agent FROM follow_up_cust ORDER BY id DESC LIMIT 1`;
+    const query = `SELECT id, assigned_agent FROM follow_up_cust WHERE sent_status = 'not-sent' ORDER BY id DESC LIMIT 1`;
     const res = await poolConnection.query(query);
 
     if (res.length > 0) {
