@@ -26,12 +26,12 @@ app.listen(process.env.APP_PORT, () => {
   //   autoController.autoScript();
   // }, interval);
 
-  autoControllerCop.autoScript();
+  // autoControllerCop.autoScript();
 
-  const interval = 4 * 60 * 1000; // 4 minutes in milliseconds
-  // const interval = 10000; // 10 seconds
-  setInterval(() => {
-    console.log("Running scheduled task...");
-    autoControllerCop.autoScript();
-  }, interval);
+  // const interval = 4 * 60 * 1000; // 4 minutes in milliseconds
+  // // const interval = 10000; // 10 seconds
+  // setInterval(() => {
+  //   console.log("Running scheduled task...");
+  //   autoControllerCop.autoScript();
+  // }, interval);
 });
